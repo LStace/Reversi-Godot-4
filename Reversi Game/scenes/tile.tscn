@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://tkd3iyutc1eb"]
+
+[node name="Tile" type="ColorRect"]
+custom_minimum_size = Vector2(72, 72)
+color = Color(0, 0.556863, 0.403922, 1)

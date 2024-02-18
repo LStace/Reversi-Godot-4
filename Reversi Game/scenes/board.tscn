@@ -1,0 +1,205 @@
+[gd_scene load_steps=3 format=3 uid="uid://41os816k6wbj"]
+
+[ext_resource type="PackedScene" uid="uid://tkd3iyutc1eb" path="res://scenes/tile.tscn" id="1_g7fm8"]
+
+[sub_resource type="Theme" id="Theme_7eeyi"]
+
+[node name="Board" type="GridContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_7eeyi")
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 8
+
+[node name="TileA1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH1" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH2" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH3" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH4" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH5" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH6" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH7" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileA8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileB8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileC8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileD8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileE8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileF8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileG8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2
+
+[node name="TileH8" parent="." instance=ExtResource("1_g7fm8")]
+layout_mode = 2

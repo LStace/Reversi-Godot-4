@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c14rt04mwim8u"]
+
+[ext_resource type="PackedScene" uid="uid://41os816k6wbj" path="res://scenes/board.tscn" id="1_n0e0j"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Board" parent="." instance=ExtResource("1_n0e0j")]
+offset_left = 279.0
+offset_top = 378.0
+offset_right = 819.0
+offset_bottom = 918.0
+
+[editable path="Board"]
