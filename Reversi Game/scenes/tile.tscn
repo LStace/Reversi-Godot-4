@@ -1,5 +1,23 @@
-[gd_scene format=3 uid="uid://tkd3iyutc1eb"]
+[gd_scene load_steps=2 format=3 uid="uid://tkd3iyutc1eb"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_d503w"]
 
 [node name="Tile" type="ColorRect"]
 custom_minimum_size = Vector2(72, 72)
 color = Color(0, 0.556863, 0.403922, 1)
+script = ExtResource("1_d503w")
+
+[node name="HoverIndicator" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.403922, 1, 1, 0.466667)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="HoverIndicator" to="." method="_on_hover_indicator_mouse_entered"]
+[connection signal="mouse_exited" from="HoverIndicator" to="." method="_on_hover_indicator_mouse_exited"]
