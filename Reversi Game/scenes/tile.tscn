@@ -4,6 +4,9 @@
 
 [node name="Tile" type="ColorRect"]
 custom_minimum_size = Vector2(72, 72)
+offset_right = 72.0
+offset_bottom = 72.0
+size_flags_vertical = 4
 color = Color(0, 0.556863, 0.403922, 1)
 script = ExtResource("1_d503w")
 
