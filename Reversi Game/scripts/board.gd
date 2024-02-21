@@ -4,6 +4,7 @@ var tiles_in_grid : Array[Array]
 var current_tile = [null, Vector2i.ZERO]
 var move_buffer : float = 0.0
 var is_player_dark : bool = true
+var turn : int = 1
 
 @onready var children = get_children()
 
@@ -56,6 +57,7 @@ func _input(event):
 	
 	if event.is_action_pressed("select"):
 		current_tile[0].place_disc(is_player_dark)
+		next_turn()
 
 
 #Called when the player hovers over a tile and shows which tile is hovered over
@@ -64,3 +66,7 @@ func on_hovered_over_tile(tile):
 	current_tile[0] = tile
 	current_tile[1] = tile.board_index
 	tile.get_node("HoverIndicator").visible = true
+
+func next_turn():
+	is_player_dark = !is_player_dark
+	turn += 1
