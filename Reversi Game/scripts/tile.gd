@@ -30,13 +30,18 @@ func place_disc(disc_colour):
 		cur_colour = disc_colour
 		disc.play(disc_animations[int(cur_colour)])
 		
+		board.disc_totals[int(cur_colour)] += 1
+		
 		for tile in flip_tiles:
 			tile.flip_disc()
 
 
+#Flips the disc that is on this tile if it is caught
 func flip_disc():
+	board.disc_totals[int(cur_colour)] -= 1
 	cur_colour = not cur_colour
 	cur_disc.play(disc_animations[int(cur_colour)])
+	board.disc_totals[int(cur_colour)] += 1
 
 
 # checks if the player can place a disc here

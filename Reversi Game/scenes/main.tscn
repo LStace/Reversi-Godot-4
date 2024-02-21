@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c14rt04mwim8u"]
+[gd_scene load_steps=3 format=3 uid="uid://c14rt04mwim8u"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_hqjk5"]
 [ext_resource type="PackedScene" uid="uid://41os816k6wbj" path="res://scenes/board.tscn" id="1_n0e0j"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_hqjk5")
 
 [node name="Board" type="ColorRect" parent="."]
 anchors_preset = 8

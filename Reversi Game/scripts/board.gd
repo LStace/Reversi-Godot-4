@@ -1,12 +1,13 @@
 extends GridContainer
 
-signal turn_completed(player_colour, turn)
+signal game_over
 
 var tiles_in_grid : Array[Array]
 var current_tile = [null, Vector2i.ZERO]
-var move_buffer : float = 0.0
-var is_player_dark : bool = true
-var turn : int = 1
+var is_player_dark : bool = false
+var turn : int = 0
+var disc_totals : Array[int] = [0,0]
+var can_move : Array[bool] = [true,true]
 
 @onready var children = get_children()
 
@@ -22,11 +23,10 @@ func _ready():
 		tiles_in_grid[tile_number % 8][tile_number / 8] = i
 		i.board_index = Vector2i(tile_number % 8, tile_number / 8)
 		i.hovered_over_tile.connect(on_hovered_over_tile)
-		turn_completed.connect(i.on_turn_completed)
 		i.board = self
 		tile_number += 1
 	
-	turn_completed.emit(is_player_dark, turn)
+	start_turn()
 
 
 #Handles input
@@ -72,4 +72,18 @@ func on_hovered_over_tile(tile):
 func start_turn():
 	is_player_dark = !is_player_dark
 	turn += 1
-	turn_completed.emit(is_player_dark, turn)
+	
+	var temp_move_possible = false
+	for tile in get_children():
+		tile.on_turn_completed(is_player_dark, turn)
+		if tile.legal_move:
+			temp_move_possible = true
+	
+	if not temp_move_possible:
+		can_move[int(is_player_dark)] = false
+	
+	if can_move[0] == false and can_move[1] == false:
+		game_over.emit()
+	
+	elif can_move[int(!is_player_dark)] and not can_move[int(is_player_dark)]:
+		start_turn()
