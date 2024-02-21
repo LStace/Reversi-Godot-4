@@ -29,8 +29,17 @@ func place_disc(disc_colour):
 		cur_disc = disc
 		cur_colour = disc_colour
 		disc.play(disc_animations[int(cur_colour)])
+		
+		for tile in flip_tiles:
+			tile.flip_disc()
 
 
+func flip_disc():
+	cur_colour = not cur_colour
+	cur_disc.play(disc_animations[int(cur_colour)])
+
+
+# checks if the player can place a disc here
 func on_turn_completed(player_colour, turn):
 	flip_tiles.clear()
 	legal_move = false
@@ -60,7 +69,7 @@ func on_turn_completed(player_colour, turn):
 							board_index.y + (dir.y * i) >= 8  
 					):
 						break
-					# check that a line can be made
+					# checks that a line can be made and stores all discs that could be flipped
 					var checkTile = board.tiles_in_grid[board_index.x + (dir.x * i)][board_index.y + (dir.y * i)]
 					if checkTile.cur_disc != null:
 						if checkTile.cur_colour == not player_colour:
@@ -68,7 +77,9 @@ func on_turn_completed(player_colour, turn):
 						elif i != 1:
 							legal_move = true
 							for tile in temp_flip_tiles:
-								flip_tiles.append(i)
+								flip_tiles.append(tile)
+							break
+						else:
 							break
 					else:
 						break
