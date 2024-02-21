@@ -1,5 +1,7 @@
 extends GridContainer
 
+signal turn_completed(player_colour, turn)
+
 var tiles_in_grid : Array[Array]
 var current_tile = [null, Vector2i.ZERO]
 var move_buffer : float = 0.0
@@ -20,13 +22,11 @@ func _ready():
 		tiles_in_grid[tile_number % 8][tile_number / 8] = i
 		i.board_index = Vector2i(tile_number % 8, tile_number / 8)
 		i.hovered_over_tile.connect(on_hovered_over_tile)
+		turn_completed.connect(i.on_turn_completed)
+		i.board = self
 		tile_number += 1
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	turn_completed.emit(is_player_dark, turn)
 
 
 #Handles input
@@ -56,8 +56,9 @@ func _input(event):
 	#endregion
 	
 	if event.is_action_pressed("select"):
-		current_tile[0].place_disc(is_player_dark)
-		next_turn()
+		if current_tile[0].legal_move:
+			current_tile[0].place_disc(is_player_dark)
+			start_turn()
 
 
 #Called when the player hovers over a tile and shows which tile is hovered over
@@ -67,6 +68,8 @@ func on_hovered_over_tile(tile):
 	current_tile[1] = tile.board_index
 	tile.get_node("HoverIndicator").visible = true
 
-func next_turn():
+
+func start_turn():
 	is_player_dark = !is_player_dark
 	turn += 1
+	turn_completed.emit(is_player_dark, turn)

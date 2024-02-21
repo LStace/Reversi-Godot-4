@@ -22,5 +22,3 @@ mouse_filter = 2
 color = Color(0.403922, 1, 1, 0.466667)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="HoverIndicator" to="." method="_on_hover_indicator_mouse_entered"]
-[connection signal="mouse_exited" from="HoverIndicator" to="." method="_on_hover_indicator_mouse_exited"]
