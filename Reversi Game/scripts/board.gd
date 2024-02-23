@@ -6,7 +6,7 @@ signal turn_started(winner)
 var tiles_in_grid : Array[Array]
 var current_tile = [null, Vector2i.ZERO]
 var is_player_dark : bool = false
-var turn : int = 0
+var turn : int = 1
 var disc_totals : Array[int] = [0,0]
 var can_move : Array[bool] = [true,true]
 
@@ -59,6 +59,7 @@ func _input(event):
 	if event.is_action_pressed("select"):
 		if current_tile[0].legal_move:
 			current_tile[0].place_disc(is_player_dark)
+			turn += 1
 			start_turn()
 
 
@@ -72,7 +73,6 @@ func on_hovered_over_tile(tile):
 
 func start_turn():
 	is_player_dark = !is_player_dark
-	turn += 1
 	
 	var temp_move_possible = false
 	for tile in get_children():
