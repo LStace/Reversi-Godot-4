@@ -6,7 +6,6 @@ var board_index : Vector2i
 var disc_scene : PackedScene = preload("res://scenes/disc.tscn")
 var cur_disc : AnimatedSprite2D = null
 var cur_colour : bool
-var disc_animations = ["light_resting", "dark_resting"]
 var legal_move : bool = false
 var flip_tiles : Array
 var board = null
@@ -28,7 +27,7 @@ func place_disc(disc_colour):
 		add_child(disc)
 		cur_disc = disc
 		cur_colour = disc_colour
-		disc.play(disc_animations[int(cur_colour)])
+		disc.place(cur_colour)
 		
 		board.disc_totals[int(cur_colour)] += 1
 		
@@ -40,7 +39,7 @@ func place_disc(disc_colour):
 func flip_disc():
 	board.disc_totals[int(cur_colour)] -= 1
 	cur_colour = not cur_colour
-	cur_disc.play(disc_animations[int(cur_colour)])
+	cur_disc.flip(cur_colour)
 	board.disc_totals[int(cur_colour)] += 1
 
 

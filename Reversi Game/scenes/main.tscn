@@ -1,10 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://c14rt04mwim8u"]
+[gd_scene load_steps=9 format=3 uid="uid://c14rt04mwim8u"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_hqjk5"]
 [ext_resource type="PackedScene" uid="uid://41os816k6wbj" path="res://scenes/board.tscn" id="1_n0e0j"]
+[ext_resource type="PackedScene" uid="uid://d0ysam42gl4nh" path="res://scenes/disc.tscn" id="3_csuyg"]
+[ext_resource type="Texture2D" uid="uid://cwerc2eps75ti" path="res://sprites/dark_disc_1.png" id="3_uae7d"]
+[ext_resource type="Texture2D" uid="uid://b3h3prt8fjaw6" path="res://sprites/light_disc_1.png" id="4_o3sym"]
 
-[node name="Main" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_7sdjq"]
+line_spacing = -10.0
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4a6i"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_ir3gb"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("board_grid", "game_over", "player_display", "turn_count", "light_total", "dark_total", "winner_label", "light_final_total", "dark_final_total")]
 script = ExtResource("1_hqjk5")
+board_grid = NodePath("Board/Grid")
+game_over = NodePath("HUD/GameOverSquare")
+player_display = NodePath("HUD/CurrentPlayerSprite")
+turn_count = NodePath("HUD/TurnNumberLabel")
+light_total = NodePath("HUD/LightTotalLabel")
+dark_total = NodePath("HUD/DarkTotalLabel")
+winner_label = NodePath("HUD/GameOverSquare/WinnerLabel")
+light_final_total = NodePath("HUD/GameOverSquare/LightTotalLabel")
+dark_final_total = NodePath("HUD/GameOverSquare/DarkTotalLabel")
 
 [node name="Board" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -12,22 +35,212 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 461.0
-offset_top = 333.0
-offset_right = 1093.0
-offset_bottom = 965.0
+offset_left = 296.0
+offset_top = 248.0
+offset_right = 992.0
+offset_bottom = 944.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+color = Color(0.184314, 0.184314, 0.184314, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Grid" parent="Board" instance=ExtResource("1_n0e0j")]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = 625.0
-offset_bottom = 625.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 664.0
+offset_bottom = 664.0
 metadata/_edit_group_ = true
+
+[node name="LetterCoordinates" type="Label" parent="Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0201149
+offset_left = 48.0
+offset_top = -88.0
+offset_right = 637.765
+offset_bottom = -2.0
+text = "A B C D E F G H"
+label_settings = SubResource("LabelSettings_7sdjq")
+horizontal_alignment = 3
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NumberCoordinates" type="Label" parent="Board"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0114943
+anchor_top = 0.00143678
+anchor_right = -0.0114943
+anchor_bottom = 0.0431034
+offset_left = -56.0
+offset_top = 31.0
+offset_right = -7.0
+offset_bottom = 642.0
+text = "12345678"
+label_settings = SubResource("LabelSettings_7sdjq")
+horizontal_alignment = 2
+vertical_alignment = 3
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="DarkSprite" type="Sprite2D" parent="HUD"]
+position = Vector2(1184, 480)
+texture = ExtResource("3_uae7d")
+
+[node name="DarkTotalLabel" type="Label" parent="HUD"]
+offset_left = 1416.0
+offset_top = 436.0
+offset_right = 1500.0
+offset_bottom = 522.0
+text = "0"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="LightSprite" type="Sprite2D" parent="HUD"]
+position = Vector2(1184, 592)
+texture = ExtResource("4_o3sym")
+
+[node name="LightTotalLabel" type="Label" parent="HUD"]
+offset_left = 1416.0
+offset_top = 549.0
+offset_right = 1500.0
+offset_bottom = 635.0
+text = "0"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerLabel" type="Label" parent="HUD"]
+offset_left = 1152.0
+offset_top = 208.0
+offset_right = 1334.0
+offset_bottom = 294.0
+text = "Player"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentPlayerSprite" parent="HUD" instance=ExtResource("3_csuyg")]
+position = Vector2(1432, 257)
+
+[node name="TurnLabel" type="Label" parent="HUD"]
+offset_left = 1152.0
+offset_top = 320.0
+offset_right = 1288.0
+offset_bottom = 406.0
+text = "Turn"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="TurnNumberLabel" type="Label" parent="HUD"]
+offset_left = 1416.0
+offset_top = 325.0
+offset_right = 1450.0
+offset_bottom = 411.0
+text = "0"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Colon1" type="Label" parent="HUD"]
+offset_left = 1352.0
+offset_top = 208.0
+offset_right = 1369.0
+offset_bottom = 294.0
+text = ":"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Colon2" type="Label" parent="HUD"]
+offset_left = 1352.0
+offset_top = 320.0
+offset_right = 1369.0
+offset_bottom = 406.0
+text = ":"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Colon3" type="Label" parent="HUD"]
+offset_left = 1352.0
+offset_top = 432.0
+offset_right = 1369.0
+offset_bottom = 518.0
+text = ":"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="Colon4" type="Label" parent="HUD"]
+offset_left = 1352.0
+offset_top = 544.0
+offset_right = 1369.0
+offset_bottom = 630.0
+text = ":"
+label_settings = SubResource("LabelSettings_a4a6i")
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOverSquare" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinnerLabel" type="Label" parent="HUD/GameOverSquare"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -133.0
+offset_right = 68.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dark Wins"
+label_settings = SubResource("LabelSettings_ir3gb")
+horizontal_alignment = 1
+
+[node name="LightTotalLabel" type="Label" parent="HUD/GameOverSquare"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = 19.0
+offset_right = 114.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Light : 0"
+label_settings = SubResource("LabelSettings_ir3gb")
+horizontal_alignment = 1
+
+[node name="DarkTotalLabel" type="Label" parent="HUD/GameOverSquare"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = 93.0
+offset_right = 111.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Dark : 0"
+label_settings = SubResource("LabelSettings_ir3gb")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [editable path="Board/Grid"]

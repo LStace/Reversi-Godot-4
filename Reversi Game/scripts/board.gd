@@ -1,6 +1,7 @@
 extends GridContainer
 
 signal game_over
+signal turn_started(winner)
 
 var tiles_in_grid : Array[Array]
 var current_tile = [null, Vector2i.ZERO]
@@ -79,11 +80,16 @@ func start_turn():
 		if tile.legal_move:
 			temp_move_possible = true
 	
-	if not temp_move_possible:
-		can_move[int(is_player_dark)] = false
+	can_move[int(is_player_dark)] = temp_move_possible
 	
 	if can_move[0] == false and can_move[1] == false:
-		game_over.emit()
+		if disc_totals.max() != disc_totals.min():
+			game_over.emit(disc_totals.find(disc_totals.max()))
+		else:
+			game_over.emit(2)
 	
 	elif can_move[int(!is_player_dark)] and not can_move[int(is_player_dark)]:
 		start_turn()
+	
+	else:
+		turn_started.emit()
