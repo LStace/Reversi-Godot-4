@@ -61,6 +61,8 @@ func _input(event):
 			current_tile[0].place_disc(is_player_dark)
 			turn += 1
 			start_turn()
+		else:
+			current_tile[0].flash_illegal()
 
 
 #Called when the player hovers over a tile and shows which tile is hovered over

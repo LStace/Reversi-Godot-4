@@ -13,6 +13,7 @@ var board = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HoverIndicator.visible = false
+	$IllegalIndicator.visible = false
 
 
 func _on_mouse_entered():
@@ -41,6 +42,12 @@ func flip_disc():
 	cur_colour = not cur_colour
 	cur_disc.flip(cur_colour)
 	board.disc_totals[int(cur_colour)] += 1
+
+
+func flash_illegal():
+	$IllegalIndicator.visible = true
+	await(await get_tree().create_timer(0.2).timeout)
+	$IllegalIndicator.visible = false
 
 
 # checks if the player can place a disc here
