@@ -1,11 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0ysam42gl4nh"]
+[gd_scene load_steps=11 format=3 uid="uid://d0ysam42gl4nh"]
 
 [ext_resource type="Texture2D" uid="uid://cwerc2eps75ti" path="res://sprites/dark_disc_1.png" id="1_jgg3e"]
 [ext_resource type="Texture2D" uid="uid://b3h3prt8fjaw6" path="res://sprites/light_disc_1.png" id="2_he6aa"]
+[ext_resource type="Texture2D" uid="uid://sttbgd3brrg" path="res://sprites/dark_disc_2.png" id="2_xb5rd"]
 [ext_resource type="Script" path="res://scripts/disc.gd" id="3_dm3rt"]
+[ext_resource type="Texture2D" uid="uid://b4ri4egoys81o" path="res://sprites/dark_disc_3.png" id="3_fhqrl"]
+[ext_resource type="Texture2D" uid="uid://d3tli6ejvo2b1" path="res://sprites/dark_disc_4.png" id="4_bwxwi"]
+[ext_resource type="Texture2D" uid="uid://bfd5vq5m5jxtj" path="res://sprites/light_disc_2.png" id="6_6iruj"]
+[ext_resource type="Texture2D" uid="uid://00qk1ncxbvhh" path="res://sprites/light_disc_3.png" id="7_uj8de"]
+[ext_resource type="Texture2D" uid="uid://cce8xh2swndsj" path="res://sprites/light_disc_4.png" id="8_8vodf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fbody"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xb5rd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fhqrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bwxwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_he6aa")
+}],
+"loop": false,
+"name": &"dark_light_flip",
+"speed": 14.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_jgg3e")
@@ -13,6 +36,23 @@ animations = [{
 "loop": true,
 "name": &"dark_resting",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6iruj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uj8de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8vodf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jgg3e")
+}],
+"loop": false,
+"name": &"light_dark_flip",
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -25,5 +65,5 @@ animations = [{
 
 [node name="Disc" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_fbody")
-animation = &"dark_resting"
+animation = &"dark_light_flip"
 script = ExtResource("3_dm3rt")
